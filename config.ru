@@ -8,6 +8,6 @@ if defined?(ActiveRecord::Migrator) && ActiveRecord::Migrator.needs_migration?
 end
 
 use BikesController
-use UsersController
+use OwnersController
 use BrandsController
 run ApplicationController
