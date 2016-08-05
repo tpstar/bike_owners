@@ -7,14 +7,10 @@
   <body>
     <nav>
       <% if logged_in? %>
-
-        <a href="/clubs/new"> Create Club </a>
+        <h5>Welcome, <%=current_user.username %></h5>
+        <a href="/bikes/new"> Add a new Bike </a><br>
         <a href="/logout"> Log Out </a>
-        <p>Welcome, <%=current_user.username %></p>
 
-      <% else %>
-        <a href="/signup">Sign Up</a>
-        <a href="/login"> Sign In </a>
       <%end %>
 
     </nav>

@@ -1,5 +1,5 @@
 class OwnersController < ApplicationController
-
+    enable :sessions
 
     get '/signup' do
       if logged_in?
