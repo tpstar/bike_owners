@@ -10,16 +10,18 @@
   <br></br>
 
   <label>Review</label>
-  <input type="text" name="price">
+  <input type="text" name="review">
   <br></br>
 
-  <label>Select Bike's Brand</label>
+  <label>Type your bike's brand</label>
+  <input type="text" name="brand_name">
+  <br></br>
+
+  <label>or select your bike's brand from below</label>
   <% Brand.all.each do |brand| %>
-    <input type="checkbox" id="<%= brand.name %>"  name="brands[]" value="<%= brand.id %>"><%=brand.name%></input>
+    <input type="checkbox" id="<%= brand.name %>"  name="brand_names[]" value="<%= brand.id %>"><%=brand.name%></input>
   <% end %>
   <br></br>
-  <label>or, type the bike's brand</label>
-  <input type="text" name="brand">
-  <br></br>
+
   <input type="submit" value="submit">
 </form>

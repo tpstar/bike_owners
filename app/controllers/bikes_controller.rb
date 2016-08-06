@@ -1,4 +1,4 @@
-require 'rack-flash'
+#require 'rack-flash'
 
 class BikesController < ApplicationController
   enable :sessions
@@ -21,15 +21,21 @@ class BikesController < ApplicationController
   end
 
   post "/bikes" do
-    bike = Bike.new(content: params["name"])
-     if bike.name != ""
-       bike.owner_id = current_user.id
-
-       bike.save
-       redirect to "/bikes"
-     else
-       redirect to "/bikes/new"
-     end
+    bike = Bike.new(name: params["name"])
+    if bike.name != ""
+      bike.owner_id = current_user.id
+      bike.price = params["price"]
+      bike.review = params["review"]
+      if !params[:brand_name].empty?
+        bike.brand = Brand.find_or_create_by(name: params["brand_name"])
+      elsif params[:brand_names].first
+        bike.brand = Brand.find(params[:brand_names].first)
+      end
+      bike.save
+      redirect to "/bikes"
+    else
+      redirect to "/bikes/new"
+    end
   end
 
   get "/bikes/:id" do
