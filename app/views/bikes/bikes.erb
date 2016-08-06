@@ -2,7 +2,7 @@
 <ul>
   <%@bikes.each do |bike|%>
     <%bike.brand ? bike_brand_name = bike.brand.name : bike_brand_name = nil%>
-    <li>Name: <%=bike.name%>    Owner: <%=bike.owner.username%>     Price: <%=bike.price%>    Brand: <%=bike_brand_name%></li>
+    <li>Name: <a href="/bikes/<%=bike.id%>"><%=bike.name%></a>   Owner: <%=bike.owner.username%>     Price: <%=bike.price%>    Brand: <%=bike_brand_name%></li>
     <li>Review: <%=bike.review%>
   <%end%>
 </ul>

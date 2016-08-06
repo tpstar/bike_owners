@@ -41,7 +41,7 @@ class BikesController < ApplicationController
   get "/bikes/:id" do
     if logged_in?
      @bike = Bike.find(params[:id])
-     erb :'/bikes/show_bike'
+     erb :'/bikes/show'
     else
      redirect to "/login"
     end

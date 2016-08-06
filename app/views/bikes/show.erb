@@ -1,0 +1,17 @@
+<h1>Bike: <%=@bike.name%></h1>
+<a href="/bikes/<%=@bike.id%>/edit">Edit Bike</a>
+<ul>
+  <li>Owner: <a href="/owners/<%=@bike.owner.id%>"><%=@bike.owner.username%></a></li>
+  <li>Price: $<%=@bike.price%></li>
+  <%@bike.brand ? brand_name = @bike.brand.name : brand_name = nil%>
+  <li>Brand: <a href="/brands/<%=@bike.brand.id%>"><%=@bike.brand.name%></a></li>
+  <li>Review: <%=@bike.review%></li>
+</ul>
+
+
+<form action='/bikes/<%=@bike.id%>/delete' method="POST">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Bike">
+</form>
+
+<br></br>
