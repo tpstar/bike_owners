@@ -3,8 +3,9 @@
 <ul>
   <li>Owner: <a href="/owners/<%=@bike.owner.id%>"><%=@bike.owner.username%></a></li>
   <li>Price: $<%=@bike.price%></li>
-  <%@bike.brand ? brand_name = @bike.brand.name : brand_name = nil%>
-  <li>Brand: <a href="/brands/<%=@bike.brand.id%>"><%=@bike.brand.name%></a></li>
+  <%if @bike.brand%>
+    <li>Brand: <a href="/brands/<%=@bike.brand.id%>"><%=@bike.brand.name%></a></li>
+  <%end%>
   <li>Review: <%=@bike.review%></li>
 </ul>
 

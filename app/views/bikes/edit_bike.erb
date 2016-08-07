@@ -1,0 +1,28 @@
+<h1>Update your bike:<%=@bike.name%></h1>
+
+<form action="/bikes/<%=@bike.id%>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <label>Edit bike's name:</label>
+  <input type="text" name="name" id="bike_name" value="<%=@bike.name%>">
+  <br></br>
+  <label>Edit bike's price: $</label>
+  <input type="decimal" name="price" id="bike_price" value="<%=@bike.price%>">
+  <br></br>
+
+    <label>Edit bike's brand:</label>
+      <%@bike.brand ? bike_brand_name = @bike.brand.name : bike_brand_name = nil%>
+      <input type="text" name="brand" id="brand_name" value="<%=bike_brand_name%>">
+      <br>
+      <label>or choose bike's brand here</label>
+      <%Brand.all.each do |brand|%>
+        <input type="checkbox" id="<%=brand.name %>"  name="brands[]" value="<%= brand.id %>"><%=brand.name%></input>
+      <%end%>
+    <br></br>
+
+
+  <label>Edit bike's review:</label>
+  <input type="text" name="review" id="bike_review" value="<%=@bike.review%>">
+  <br></br>
+  <input type="submit" value="submit">
+
+</form>

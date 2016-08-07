@@ -19,7 +19,7 @@
 
   <label>or select your bike's brand from below</label>
   <% Brand.all.each do |brand| %>
-    <input type="checkbox" id="<%= brand.name %>"  name="brand_names[]" value="<%= brand.id %>"><%=brand.name%></input>
+    <input type="checkbox" id="<%= brand.name %>"  name="brands[]" value="<%= brand.id %>"><%=brand.name%></input>
   <% end %>
   <br></br>
 

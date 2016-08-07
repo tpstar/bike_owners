@@ -14,7 +14,7 @@ class BikesController < ApplicationController
 
   get '/bikes/new' do
     if logged_in?
-     erb :'/bikes/new'
+     erb :'/bikes/new_bike'
     else
      redirect to "/login"
     end
@@ -28,8 +28,8 @@ class BikesController < ApplicationController
       bike.review = params["review"]
       if !params[:brand_name].empty?
         bike.brand = Brand.find_or_create_by(name: params["brand_name"])
-      elsif params[:brand_names].first
-        bike.brand = Brand.find(params[:brand_names].first)
+      elsif params[:brands].first
+        bike.brand = Brand.find(params[:brands].first)
       end
       bike.save
       redirect to "/bikes"
@@ -41,7 +41,7 @@ class BikesController < ApplicationController
   get "/bikes/:id" do
     if logged_in?
      @bike = Bike.find(params[:id])
-     erb :'/bikes/show'
+     erb :'/bikes/show_bike'
     else
      redirect to "/login"
     end
@@ -56,15 +56,17 @@ class BikesController < ApplicationController
     end
   end
 
-  patch "/bikes/:id" do
+  post "/bikes/:id" do
     @bike = Bike.find(params[:id])
-    if params[:content] != ""
-     @bike.content = params[:content]
-     @bike.save
-     redirect "bikes/#{@bike.id}"
-    else
-     redirect "bikes/#{@bike.id}/edit"
+    @bike.name = params[:name]
+    @bike.price = params[:price]
+    if params[:brand_name] 
+      @bike.brand = Brand.find_or_create_by(name: params["brand_name"])
+    elsif params[:brands].first
+      @bike.brand = Brand.find(params[:brands].first)
     end
+    @bike.save
+    redirect "bikes/#{@bike.id}"
   end
 
 
