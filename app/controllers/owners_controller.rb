@@ -1,6 +1,7 @@
 class OwnersController < ApplicationController
     enable :sessions
-
+    use Rack::Flash
+    
     get '/signup' do
       if logged_in?
          redirect to "/bikes"

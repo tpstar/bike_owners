@@ -1,7 +1,8 @@
-#require 'rack-flash'
+require 'rack-flash'
 
 class BikesController < ApplicationController
   enable :sessions
+  use Rack::Flash
 
   get "/bikes" do
     if logged_in?
@@ -48,11 +49,13 @@ class BikesController < ApplicationController
   end
 
   get "/bikes/:id/edit" do
-    if logged_in?
-     @bike = Bike.find(params[:id])
-     erb :"/bikes/edit_bike"
+    @bike = Bike.find(params[:id])
+    if logged_in? && current_user == @bike.owner
+      erb :"/bikes/edit_bike"
     else
-     redirect to "/login"
+      flash[:message] = "You are not allowed to edit other user's bike information"
+      binding.pry
+      redirect to "/login"
     end
   end
 
@@ -60,9 +63,9 @@ class BikesController < ApplicationController
     @bike = Bike.find(params[:id])
     @bike.name = params[:name]
     @bike.price = params[:price]
-    if params[:brand_name] 
+    if params[:brand_name]
       @bike.brand = Brand.find_or_create_by(name: params["brand_name"])
-    elsif params[:brands].first
+    elsif params[:brands]
       @bike.brand = Brand.find(params[:brands].first)
     end
     @bike.save
@@ -70,14 +73,15 @@ class BikesController < ApplicationController
   end
 
 
-  delete '/bikes/:id/delete' do
+  post '/bikes/:id/delete' do
     @bike = Bike.find(params[:id])
     if current_user == @bike.owner
-     @bike = Bike.find(params[:id])
-     @bike.delete
-     redirect to '/bikes'
+      binding.pry
+      @bike = Bike.find(params[:id])
+      @bike.delete
+      redirect to '/bikes'
     else
-     redirect to "/login"
+      redirect to "/login"
     end
   end
 end
