@@ -1,0 +1,4 @@
+<h1>Brand: <%=@brand.name%></h1>
+<%@brand.bikes.each do |bike|%>
+  <li><a href='/bikes/<%=bike.id%>'><%=bike.name%></a></li>
+<%end%>

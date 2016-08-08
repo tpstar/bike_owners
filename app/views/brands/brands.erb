@@ -1,0 +1,11 @@
+<h1>List of Brands and their bikes</h1>
+<ul>
+  <%@brands.each do |brand|%>
+    <li><%=brand.name%></li>
+    <ul>
+      <%brand.bikes.each do |bike|%>
+        <li><a href='/bikes/<%=bike.id%>'><%=bike.name%></a></li>
+      <%end%>
+    </ul>
+  <%end%>
+</ul>

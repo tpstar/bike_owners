@@ -1,5 +1,3 @@
-require 'rack-flash'
-
 class BikesController < ApplicationController
   enable :sessions
   use Rack::Flash
@@ -54,7 +52,7 @@ class BikesController < ApplicationController
       if current_user == @bike.owner
         erb :"/bikes/edit_bike"
       else
-        flash[:message] = "You are not allowed to edit other user's bike information"
+        flash[:warning] = "You are not allowed to edit other user's bike information"
         redirect "bikes/#{@bike.id}"
       end
     else

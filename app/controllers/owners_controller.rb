@@ -1,11 +1,12 @@
 class OwnersController < ApplicationController
-    enable :sessions
-    use Rack::Flash
+  enable :sessions
+  use Rack::Flash
 
     get '/signup' do
       if logged_in?
          redirect to "/bikes"
       else
+        @flash_warning = "flash warning test"
         erb :'/owners/create_user'
       end
     end
@@ -16,6 +17,7 @@ class OwnersController < ApplicationController
         session[:user_id] = owner.id
         redirect "/bikes"
       else
+        flash[:warning] = "Signup failed. Please try again."
         redirect "/signup"
       end
     end
