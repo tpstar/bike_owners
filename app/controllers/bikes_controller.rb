@@ -61,7 +61,7 @@ class BikesController < ApplicationController
     end
   end
 
-  post "/bikes/:id" do
+  patch "/bikes/:id" do
     @bike = Bike.find(params[:id])
     @bike.name = params[:name]
     @bike.price = params[:price]
