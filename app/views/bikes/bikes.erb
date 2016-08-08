@@ -1,8 +1,13 @@
-<h1>Bikes</h1>
+<h3>Bikes</h3>
 <ul>
   <%@bikes.each do |bike|%>
     <%bike.brand ? bike_brand_name = bike.brand.name : bike_brand_name = nil%>
-    <li>Name: <a href="/bikes/<%=bike.id%>"><%=bike.name%></a>   Owner: <%=bike.owner.username%>     Price: <%=bike.price%>    Brand: <%=bike_brand_name%></li>
-    <li>Review: <%=bike.review%>
+    <h4><a href="/bikes/<%=bike.id%>"><%=bike.name%></a></h4>
+    <ul>
+      <li>Owner: <%=bike.owner.username%></li>
+      <li>Price: <%=bike.price%></li>
+      <li>Brand: <%=bike_brand_name%></li>
+      <li>Review: <%=bike.review%>
+    </ul>
   <%end%>
 </ul>
