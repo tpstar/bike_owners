@@ -6,7 +6,8 @@ class OwnersController < ApplicationController
       if logged_in?
          redirect to "/bikes"
       else
-        @flash_warning = "flash warning test"
+        @signup_warning = session[:signup_warning]
+        session[:signup_warning] = nil
         erb :'/owners/create_user'
       end
     end
@@ -17,7 +18,7 @@ class OwnersController < ApplicationController
         session[:user_id] = owner.id
         redirect "/bikes"
       else
-        flash[:warning] = "Signup failed. Please try again."
+        session[:signup_warning] = "Signup failed. Please try again."
         redirect "/signup"
       end
     end
@@ -26,6 +27,8 @@ class OwnersController < ApplicationController
       if logged_in?
          redirect to "/bikes"
       else
+        @login_warning = session[:login_warning]
+        session[:login_warning] = nil
         erb :'/owners/login'
       end
     end
@@ -37,6 +40,7 @@ class OwnersController < ApplicationController
   #      binding.pry
         redirect "/bikes"
       else
+        session[:login_warning] = "Login failed. Please try again"
         redirect "/login"
       end
     end
