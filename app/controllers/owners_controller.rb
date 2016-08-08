@@ -1,7 +1,7 @@
 class OwnersController < ApplicationController
     enable :sessions
     use Rack::Flash
-    
+
     get '/signup' do
       if logged_in?
          redirect to "/bikes"
@@ -36,6 +36,22 @@ class OwnersController < ApplicationController
         redirect "/bikes"
       else
         redirect "/login"
+      end
+    end
+
+    get "/owners" do
+      if logged_in?
+        @owners = Owner.all
+        erb :"/owners/owners"
+      end
+    end
+
+    get "/owners/:id" do
+      if logged_in?
+       @owner = Owner.find(params[:id])
+       erb :'/owners/show_owner'
+      else
+       redirect to "/login"
       end
     end
 

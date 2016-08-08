@@ -50,11 +50,14 @@ class BikesController < ApplicationController
 
   get "/bikes/:id/edit" do
     @bike = Bike.find(params[:id])
-    if logged_in? && current_user == @bike.owner
-      erb :"/bikes/edit_bike"
+    if logged_in?
+      if current_user == @bike.owner
+        erb :"/bikes/edit_bike"
+      else
+        flash[:message] = "You are not allowed to edit other user's bike information"
+        redirect "bikes/#{@bike.id}"
+      end
     else
-      flash[:message] = "You are not allowed to edit other user's bike information"
-      binding.pry
       redirect to "/login"
     end
   end
@@ -76,7 +79,6 @@ class BikesController < ApplicationController
   post '/bikes/:id/delete' do
     @bike = Bike.find(params[:id])
     if current_user == @bike.owner
-      binding.pry
       @bike = Bike.find(params[:id])
       @bike.delete
       redirect to '/bikes'
