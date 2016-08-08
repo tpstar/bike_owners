@@ -4,24 +4,24 @@ class BikesController < ApplicationController
 
   get "/bikes" do
     if logged_in?
-     @bikes = Bike.all
-     erb :'/bikes/bikes'
+      @bikes = Bike.all
+      erb :'/bikes/bikes'
     else
-     redirect to "/login"
+      redirect to "/login"
     end
   end
 
   get '/bikes/new' do
     if logged_in?
-     erb :'/bikes/new_bike'
+      erb :'/bikes/new_bike'
     else
-     redirect to "/login"
+      redirect to "/login"
     end
   end
 
   post "/bikes" do
-    bike = Bike.new(name: params["name"])
-    if bike.name != ""
+    if params["name"] != ""
+      bike = Bike.new(name: params["name"])
       bike.owner_id = current_user.id
       bike.price = params["price"]
       bike.review = params["review"]
@@ -33,6 +33,7 @@ class BikesController < ApplicationController
       bike.save
       redirect to "/bikes"
     else
+      flash[:warning] = "Please enter bike's name."
       redirect to "/bikes/new"
     end
   end
@@ -52,7 +53,7 @@ class BikesController < ApplicationController
       if current_user == @bike.owner
         erb :"/bikes/edit_bike"
       else
-        flash[:warning] = "You are not allowed to edit other user's bike information"
+        flash[:warning] = "You are not allowed to edit other user's bike information."
         redirect "bikes/#{@bike.id}"
       end
     else
@@ -74,14 +75,15 @@ class BikesController < ApplicationController
   end
 
 
-  post '/bikes/:id/delete' do
+  delete '/bikes/:id/delete' do
     @bike = Bike.find(params[:id])
     if current_user == @bike.owner
       @bike = Bike.find(params[:id])
       @bike.delete
       redirect to '/bikes'
     else
-      redirect to "/login"
+      flash[:warning] = "You are not allowed to delete other user's bike information."
+      redirect to "bikes/#{@bike.id}"
     end
   end
 end

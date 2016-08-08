@@ -1,3 +1,7 @@
+<% if flash.has?(:warning) %>
+  <%= flash[:warning] %>
+<% end %>
+
 <h1>Post your Bike</h1>
 
 <form action="/bikes" method="POST">
