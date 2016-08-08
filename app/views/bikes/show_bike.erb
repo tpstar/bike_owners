@@ -1,8 +1,9 @@
 <% if flash.has?(:warning) %>
   <%= flash[:warning] %>
 <% end %>
-<h3>Bike: <%=@bike.name%></h3>
-<a href="/bikes/<%=@bike.id%>/edit">Edit Bike</a>
+<h3>Bike: <%=@bike.name%>
+<span>    <a href="/bikes/<%=@bike.id%>/edit" class="btn btn-default btn-sm" role="button">Edit Bike</a></span>
+</h3>
 <ul>
   <li>Owner: <a href="/owners/<%=@bike.owner.id%>"><%=@bike.owner.username%></a></li>
   <li>Price: $<%=@bike.price%></li>

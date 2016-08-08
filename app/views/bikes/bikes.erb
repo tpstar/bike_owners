@@ -1,13 +1,7 @@
 <h3>Bikes</h3>
-<ul>
+
   <%@bikes.reverse_each do |bike|%>
     <%bike.brand ? bike_brand_name = bike.brand.name : bike_brand_name = nil%>
-    <h4><a href="/bikes/<%=bike.id%>"><%=bike.name%></a></h4>
-    <ul>
-      <li>Owner: <%=bike.owner.username%></li>
-      <li>Price: <%=bike.price%></li>
-      <li>Brand: <%=bike_brand_name%></li>
-      <li>Review: <%=bike.review%>
-    </ul>
+    <h4><a href="/bikes/<%=bike.id%>"><%=bike.name%></a> </h4>
+    <p>from <%=bike_brand_name%> $<%=bike.price%></p>
   <%end%>
-</ul>

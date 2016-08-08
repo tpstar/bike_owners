@@ -5,24 +5,21 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   </head>
   <body>
-    <nav>
-      <% if logged_in? %>
-        <h5>Welcome, <%=current_user.username %></h5>
-        <a href="/bikes/new"> Add a new Bike </a><br>
-        <a href='/bikes'>List of all bikes</a><br>
-        <a href='/owners'>List of all bike owners</a><br>
-        <a href='/brands'>List of all bike brands</a><br>
-        <a href="/logout"> Log Out </a>
-        <br>
-      <%end %>
 
+    <nav>
+        <% if logged_in? %>
+        <ul class="nav nav-tabs">
+          <li role="presentation"><a href="/bikes/new">Add New Bike</a></li>
+          <li role="presentation"><a href='/bikes'>List of Bikes</a></li>
+          <li role="presentation"><a href='/owners'>List of Owners</a></li>
+          <li role="presentation"><a href='/brands'>List of Brands</a></li>
+          <li role="presentation"><a href="/logout"> Log Out </a></li>
+        </ul>
+        <%end %>
     </nav>
+
     <div class="container">
-      <% if !@error_message.nil? %>
-      <div class="alert alert-warning">
-        <%= @error_message %>
-      </div>
-    <% end %>
+    <h5>Welcome, <%=current_user.username %></h5>
       <%= yield %>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
