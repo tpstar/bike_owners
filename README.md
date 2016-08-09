@@ -5,7 +5,7 @@ This app is for bicycle owners, who wants to post their bikes and share their bi
 
 # Usage
 
-To use this app, just clone, run bundle install and rake db:migrate and then run shotgun. Everything should be set up.
+To use this app, just clone, run bundle install, rake db:migrate and then run shotgun. Everything should be set up.
 
 # Contribution
 
