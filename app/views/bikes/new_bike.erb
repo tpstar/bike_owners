@@ -21,7 +21,7 @@
   <input type="text" name="brand_name">
   <br></br>
 
-  <label>or select your bike's brand from below</label>
+  <label>or select your bike's brand from below</label><br>
   <% Brand.all.each do |brand| %>
     <input type="checkbox" id="<%= brand.name %>"  name="brands[]" value="<%= brand.id %>"><%=brand.name%></input>
   <% end %>
