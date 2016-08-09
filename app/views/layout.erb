@@ -6,8 +6,8 @@
   </head>
   <body>
     <% if logged_in? %>
-      <nav>
-
+    <nav class="navbar navbar-default">
+      </div>
           <ul class="nav nav-tabs">
             <li role="presentation"><a href="/bikes/new">Add New Bike</a></li>
             <li role="presentation"><a href='/bikes'>List of Bikes</a></li>
@@ -18,9 +18,8 @@
 
       </nav>
       <h5>Welcome, <%=current_user.username %></h5>
-
     <%end %>
-    <div class="container">  
+    <div class="container">
       <%= yield %>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
