@@ -5,21 +5,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   </head>
   <body>
+    <% if logged_in? %>
+      <nav>
 
-    <nav>
-        <% if logged_in? %>
-        <ul class="nav nav-tabs">
-          <li role="presentation"><a href="/bikes/new">Add New Bike</a></li>
-          <li role="presentation"><a href='/bikes'>List of Bikes</a></li>
-          <li role="presentation"><a href='/owners'>List of Owners</a></li>
-          <li role="presentation"><a href='/brands'>List of Brands</a></li>
-          <li role="presentation"><a href="/logout"> Log Out </a></li>
-        </ul>
-        <%end %>
-    </nav>
+          <ul class="nav nav-tabs">
+            <li role="presentation"><a href="/bikes/new">Add New Bike</a></li>
+            <li role="presentation"><a href='/bikes'>List of Bikes</a></li>
+            <li role="presentation"><a href='/owners'>List of Owners</a></li>
+            <li role="presentation"><a href='/brands'>List of Brands</a></li>
+            <li role="presentation"><a href="/logout"> Log Out </a></li>
+          </ul>
 
-    <div class="container">
-    <h5>Welcome, <%=current_user.username %></h5>
+      </nav>
+      <h5>Welcome, <%=current_user.username %></h5>
+
+    <%end %>
+    <div class="container">  
       <%= yield %>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
