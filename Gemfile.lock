@@ -14,6 +14,8 @@ GEM
       activemodel (= 4.2.6)
       activesupport (= 4.2.6)
       arel (~> 6.0)
+    activerecord-postgresql-adapter (0.0.1)
+      pg
     activesupport (4.2.6)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
@@ -51,6 +53,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    puma (3.9.1)
     rack (1.6.4)
     rack-flash3 (1.0.5)
       rack
@@ -113,11 +116,13 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  activerecord-postgresql-adapter
   bcrypt
   capybara
   database_cleaner!
   pg
   pry
+  puma
   rack-flash3
   rack-test
   rake

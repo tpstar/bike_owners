@@ -7,13 +7,15 @@ gem 'rack-flash3'
 gem 'rake'
 gem 'require_all'
 gem 'thin'
-gem 'shotgun'
-gem 'pry'
 gem 'bcrypt'
-gem "tux"
+gem 'puma'
+
 
 group :development do
   gem 'sqlite3'
+  gem "tux"
+  gem 'shotgun'
+  gem 'pry'
 end
 
 group :test do
@@ -25,4 +27,5 @@ end
 
 group :production do
   gem 'pg'
+  gem 'activerecord-postgresql-adapter'
 end
