@@ -61,10 +61,11 @@ class BikesController < ApplicationController
     end
   end
 
-  patch "/bikes/:id" do
+  post "/bikes/:id" do
     @bike = Bike.find(params[:id])
     @bike.name = params[:name]
     @bike.price = params[:price]
+    @bike.review = params[:review]
     if params[:brand_name]
       @bike.brand = Brand.find_or_create_by(name: params["brand_name"])
     elsif params[:brands]
@@ -75,7 +76,7 @@ class BikesController < ApplicationController
   end
 
 
-  delete '/bikes/:id/delete' do
+  post '/bikes/:id/delete' do
     @bike = Bike.find(params[:id])
     if current_user == @bike.owner
       @bike = Bike.find(params[:id])

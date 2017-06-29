@@ -1,5 +1,5 @@
 require 'bundler'
-Bundler.require(:default, :development, :production)
+Bundler.require
 ENV['SINATRA_ENV'] ||= "development"
 
 configure :development do
@@ -23,6 +23,6 @@ configure :production do
   )
 end
 
-require_relative '../app/controllers/application_controller.rb'
+
 require_all 'app'
 set :public_folder, File.dirname(__FILE__) + '/public'
