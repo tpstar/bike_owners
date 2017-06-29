@@ -61,7 +61,7 @@ class BikesController < ApplicationController
     end
   end
 
-  post "/bikes/:id" do
+  patch "/bikes/:id" do
     @bike = Bike.find(params[:id])
     @bike.name = params[:name]
     @bike.price = params[:price]
@@ -76,7 +76,7 @@ class BikesController < ApplicationController
   end
 
 
-  post '/bikes/:id/delete' do
+  delete '/bikes/:id/delete' do
     @bike = Bike.find(params[:id])
     if current_user == @bike.owner
       @bike = Bike.find(params[:id])
