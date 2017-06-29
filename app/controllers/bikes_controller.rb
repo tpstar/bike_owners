@@ -7,6 +7,7 @@ class BikesController < ApplicationController
       @bikes = Bike.all
       erb :'/bikes/bikes'
     else
+      session[:login_warning] = "Please login first."
       redirect to "/login"
     end
   end
@@ -15,6 +16,7 @@ class BikesController < ApplicationController
     if logged_in?
       erb :'/bikes/new_bike'
     else
+      session[:login_warning] = "Please login first."
       redirect to "/login"
     end
   end

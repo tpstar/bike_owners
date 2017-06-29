@@ -3,6 +3,8 @@ class BrandsController < ApplicationController
     if logged_in?
       @brands = Brand.all
       erb :"/brands/brands"
+    else
+     redirect to "/login"
     end
   end
 

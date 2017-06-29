@@ -49,6 +49,8 @@ class OwnersController < ApplicationController
       if logged_in?
         @owners = Owner.all
         erb :"/owners/owners"
+      else
+       redirect to "/login"
       end
     end
 
