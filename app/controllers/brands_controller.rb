@@ -4,7 +4,8 @@ class BrandsController < ApplicationController
       @brands = Brand.all
       erb :"/brands/brands"
     else
-     redirect to "/login"
+      session[:login_warning] = "Please login first."
+      redirect to "/login"
     end
   end
 
@@ -13,7 +14,6 @@ class BrandsController < ApplicationController
      @brand = Brand.find(params[:id])
      erb :'/brands/show_brand'
     else
-     session[:login_warning] = "Please login first."
      redirect to "/login"
     end
   end
