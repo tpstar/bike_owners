@@ -50,6 +50,7 @@ class OwnersController < ApplicationController
         @owners = Owner.all
         erb :"/owners/owners"
       else
+       session[:login_warning] = "Please login first."
        redirect to "/login"
       end
     end
