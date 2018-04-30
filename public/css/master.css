@@ -2,6 +2,15 @@ section {
   padding-top: 70px;
 }
 
+section {
+  background-image: linear-gradient(rgb(208, 216, 255, 0.5), rgb(208, 216, 255, 0.5)), /* make background hazy */
+                  url(/img/bicycle.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* fill whole page with section */
+  background-attachment: fixed;
+}
+
 nav img { /* logo */
   height: 50px;
   width: auto;
