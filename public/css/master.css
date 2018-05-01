@@ -1,3 +1,7 @@
+body {
+  font-family: 'Lato', 'Arial', sans-serif;
+}
+
 section {
   padding-top: 70px;
 }
@@ -26,6 +30,10 @@ nav img { /* logo */
   margin-top: 100px;
 }
 
+.header-box > h2 {
+  margin-top: 50px;
+}
+
 .signup {
   margin: 100px 80px 0;
   background-color: rgba(232, 234, 246, 0.4);
@@ -36,6 +44,7 @@ nav img { /* logo */
 .signup-header {
 	text-align: center;
 }
+
 
 /* FORM */
 
