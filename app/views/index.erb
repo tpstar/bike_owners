@@ -12,21 +12,21 @@
           <h2>Join Now</h2>
           <h3>and share your information.</h3>
         </div>
-        <form>
+        <form action="/signup" method="POST">
           <div class="group">
-            <input type="text"><span class="highlight"></span><span class="bar"></span>
+            <input type="text" name="username"><span class="highlight"></span><span class="bar"></span>
             <label>username</label>
           </div>
           <div class="group">
-            <input type="email"><span class="highlight"></span><span class="bar"></span>
+            <input type="password" name="password"><span class="highlight"></span><span class="bar"></span>
             <label>password</label>
           </div>
-          <button type="button" class="button buttonBlue">Sign Up
+          <button type="submit" class="button buttonBlue">Sign Up
             <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
           </button>
         </form>
         <!-- <p><a href='/signup'>Sign up</a><p> -->
-        
+        <!-- <p><a href='/login'>Login</a><p> -->
       </div>
     </div> <!-- .col -->
   </div> <!-- .row -->
