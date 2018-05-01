@@ -37,6 +37,8 @@ nav img { /* logo */
 	text-align: center;
 }
 
+/* FORM */
+
 form,
 .login {
   width: 300px;
@@ -44,38 +46,28 @@ form,
   padding: 10px 5px;
 }
 
-.group {
-	position: relative; /* to position label */
-	margin: 15px 0 30px;
-}
 
 input {
+  margin: 15px 0 16px;
 	font-size: 18px;
 	padding: 10px 10px 10px 5px;
 	-webkit-appearance: none;
 	display: block;
 	background: rgba(232, 234, 246, 0.9);
-	color: #535353;
 	width: 100%;
 	border: none;
 	border-radius: 0;
 	border-bottom: 1px solid #3F51B5;
+  transition: 0.2s ease;
 }
 
-input:focus { outline: none; }
 
+/* input[type="password"]:focus */
 
-/* Label */
-
-label {
-	color: #888;
-	font-size: 18px;
-	font-weight: normal;
-	position: absolute;
-	pointer-events: none;
-	left: 5px;
-	top: 10px;
-	transition: all 0.2s ease;
+input:focus {
+  outline: none;
+  border-bottom: 2px solid #42A5F5;
+  margin-bottom: 15px;
 }
 
 /* Button */
@@ -84,7 +76,7 @@ label {
   position: relative;
   display: inline-block;
   padding: 12px 24px;
-  margin: .3em 0 1em 0;
+  margin: 15px 0 25px 0;
   width: 100%;
   vertical-align: middle;
   color: #fff;
@@ -101,7 +93,11 @@ label {
 }
 .button:focus { outline: 0; }
 
+/* Button modifiers */
+
 .buttonBlue {
   background: rgba(74, 137, 220, 0.8);
   text-shadow: 1px 1px 0 rgba(39, 110, 204, .5);
 }
+
+.buttonBlue:hover { background: #357bd8; }
