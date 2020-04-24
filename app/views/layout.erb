@@ -8,29 +8,7 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <a href="/">
-          <img src="/img/hanlee_logo.png" alt="hanlee logo">
-        </a>
-        <ul class="nav navbar-nav navbar-right">
-          <li role="presentation"><a href="/bikes/new">Add New Bike</a></li>
-          <li role="presentation"><a href='/bikes'>List of Bikes</a></li>
-          <li role="presentation"><a href='/owners'>List of Owners</a></li>
-          <li role="presentation"><a href='/brands'>List of Brands</a></li>
-          <li role="presentation"><a href='/login'>Login</a></li>
-          <% if logged_in? %>
-            <li role="presentation"><a href="/logout"> Log Out </a></li>
-          <%end %>
-        </ul>
-      </div>
-    </nav>
-    <section>
-      <% if logged_in? %>
-        <h5>Welcome, <%=current_user.username %></h5>
-      <%end %>
-
-      <div class="container">
+      <div>
         <%= yield %>
       </div>
     </section>

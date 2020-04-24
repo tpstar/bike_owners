@@ -1,26 +1,51 @@
 <div class="container">
-  <div class="row">
+  <div class="row" style="margin-top: 90px;">
     <div class="col-md-6">
-      <div class="header-box">
-        <h1>Welcome to Bike Owners!</h1>
-        <h2>Place to share your bike's information with other bike riders</h2>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="signup">
-        <div class="signup-header">
-          <h2>Join Now</h2>
-          <h3>and share your information.</h3>
-        </div>
-        <form action="/signup" method="POST">
-            <input type="text" name="username" placeholder="username">
-            <input type="password" name="password" placeholder="password">
+    <%
+      completed_count = 5
+      total_count = 5
+      incomplete_count = (total_count - completed_count)
+      
+    %>
+    <table align="center">
+      <tbody>
+      <tr width="100%" align="center">
+        <td>
+          <p style="font-size:24px;line-height:1.5em;">
+            <strong>Mike Slowik</strong> has completed a rental application for your property at <strong>1624 N Larrabee St</strong>.
+          </p>
+        </td>
+      </tr>
+    </table>
 
-          <button type="submit" class="button buttonBlue">Sign Up</button>
-        </form>
-        <!-- <p><a href='/signup'>Sign up</a><p> -->
-        <!-- <p><a href='/login'>Login</a><p> -->
-      </div>
-    </div> <!-- .col -->
+    <p style="font-size:14px; color: #777777">Percentage of Applicants Complete</p>
+    <table class="row" width="600" style="border-spacing: 0;">
+      <tbody>
+        <tr>
+          <td height="30" style="width: <%= (completed_count*100 / total_count).to_i %>%; height: 30px; vertical-align: top; background-color: 3cbc8d;" bgcolor="3cbc8d" valign="top">
+            <span>&nbsp;</span>
+          </td>
+          <% unless incomplete_count == 0 %>
+            <td height="30" style="width: <%= (incomplete_count*100 / total_count).to_i %>%; height: 30px; vertical-align: top; background-color: bdc3c7;" bgcolor="bdc3c7" valign="top">
+              <span>&nbsp;</span>
+            </td>
+          <% end %>
+        </tr>
+        
+        <tr>
+          <td style="width: <%= (completed_count*100 / total_count).to_i %>%; text-align: right">
+            <% if (completed_count*100 / total_count) > 50 %>
+              <%=(completed_count*100 / total_count).to_i %>%
+            <% end %>
+          </td>
+          <% if (completed_count*100 / total_count) <= 50 %>
+          <td style="text-align: left">
+            <%= (completed_count*100 / total_count).to_i %>%
+          </td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+    </div>
   </div> <!-- .row -->
 </div> <!-- .container -->
